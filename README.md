@@ -2,8 +2,12 @@
 Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculatation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems. 
 
 ## Installation
+You can install the RipleyK package using the following pip command:
+```
+pip install ripleyk
+```
 
-To get started quickly follow these steps:
+To get started from source quickly follow these steps:
 
 1. Clone or download this respository and launch python within the folder.
 
