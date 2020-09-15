@@ -71,9 +71,9 @@ def calculate_ripley(radii, sample_size, d1=None, d2=None, d3=None, sample_shape
                 if boundary_correct:
                     vol = calculate_overlap([x], sample_size, radius, sample_shape, dimensions)
                     boundary_correction = vol/score_vol
-                    counts += len(tree.query_ball_point([x], radius))/boundary_correction
+                    counts += (len(tree.query_ball_point([x], radius))-1)/boundary_correction
                 else:
-                    counts += len(tree.query_ball_point([x], radius))
+                    counts += len(tree.query_ball_point([x], radius))-1
         elif dimensions == 2:
             score_vol = np.pi * radius**2
             if sample_shape=='circle':
@@ -85,9 +85,9 @@ def calculate_ripley(radii, sample_size, d1=None, d2=None, d3=None, sample_shape
                 if boundary_correct:
                     vol = calculate_overlap([x,y], sample_size, radius, sample_shape, dimensions)
                     boundary_correction = vol/score_vol
-                    counts += len(tree.query_ball_point([x,y], radius))/boundary_correction
+                    counts += (len(tree.query_ball_point([x,y], radius))-1)/boundary_correction
                 else:
-                    counts += len(tree.query_ball_point([x,y], radius))
+                    counts += len(tree.query_ball_point([x,y], radius))-1
         else:
             score_vol = (4/3) * np.pi * radius**3
             if sample_shape=='circle':
@@ -99,9 +99,9 @@ def calculate_ripley(radii, sample_size, d1=None, d2=None, d3=None, sample_shape
                 if boundary_correct:
                     vol = calculate_overlap([x,y,z], sample_size, radius, sample_shape, dimensions)
                     boundary_correction = vol/score_vol
-                    counts += len(tree.query_ball_point([x,y,z], radius))/boundary_correction
+                    counts += (len(tree.query_ball_point([x,y,z], radius))-1)/boundary_correction
                 else:
-                    counts += len(tree.query_ball_point([x,y,z], radius))
+                    counts += len(tree.query_ball_point([x,y,z], radius))-1
         if CSR_Normalise:
             results.append((bound_size*counts/len(d1)**2) - score_vol)
         else:

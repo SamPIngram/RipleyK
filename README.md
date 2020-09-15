@@ -18,7 +18,36 @@ To get started from source quickly follow these steps:
 pip install -r requirements.txt
 ```
 
-## Example
+## Theory
+The mathematical equations for the calculated Ripley K value and normalised L value at each dimension is as follows:
+
+### 1D Equations:
+
+<img src="https://render.githubusercontent.com/render/math?math=
+K(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
+
+<img src="https://render.githubusercontent.com/render/math?math=
+L(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - 2r">
+
+### 2D Equations: 
+
+<img src="https://render.githubusercontent.com/render/math?math=
+K(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
+
+<img src="https://render.githubusercontent.com/render/math?math=
+L(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \pi r^{2}">
+
+### 3D Equations: 
+
+<img src="https://render.githubusercontent.com/render/math?math=
+K(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
+
+<img src="https://render.githubusercontent.com/render/math?math=
+L(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \frac{4}{3} \pi r^{3}">
+
+Note the term "region" is being used interchangeably for distance, area and volume for the 1D, 2D and 3D descriptions respectively. r is the line (1D) or radius (2D/3D) of the search region. ω is the ratio of overlap of the search region with the whole sample region, this is 1 if the search region is entirely within the sample region and <1 if some of the search region is outside of the sample region. If all of the search region is outside of the sample region this is 0 and the Ripley value will not be calculated. I is the indicator function which will be either 1 if the condition D(i,j)≤r is true or will be 0, where D(i,j) is the euclidean distance between points i and j. The size of the sample region is defined as a distance (D), area (A) or volume (V) within the 1D, 2D and 3D equations respectively.
+
+## Code Example
 
 For these examples lets create a random subset of points in a sphere of radius 1:
 ```python
@@ -58,9 +87,9 @@ k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys)
 print(k)
 ```
 
-You should get a value of ```0.7576``` as k.
+You should get a value of ```0.7573``` as k.
 
-By default this will not include any boundary correction. To add this simply add ```boundary_correct=True``` to the above function. This should always increase the value. Now we get a value of ```0.8650``` as k.
+By default this will not include any boundary correction. To add this simply add ```boundary_correct=True``` to the above function. This should always increase the value. Now we get a value of ```0.8646``` as k.
 
 Finally, there is a normalisation which can be applied to evaluate the clustering of the k-value in comparison to a completely spatially random (CSR). If the distribution is close to CSR the value should tend to 0. Below is the same calculation, but now includes boundary correction and normalisation:
 
@@ -73,7 +102,7 @@ k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys, boundary_cor
 print(k)
 ```
 
-As we generated the points randomly, we see that this normalisation does make the value much closer to 0, here we got ```0.0796```. For non randomly distributed points a postive value indicates clustering and a negative value indicates dispersion.
+As we generated the points randomly, we see that this normalisation does make the value much closer to 0, here we got ```0.0792```. For non randomly distributed points a postive value indicates clustering and a negative value indicates dispersion.
 
 ### Multiple radii calculation (3D)
 
@@ -89,7 +118,7 @@ print(k)
 
 You should get the following results: 
 ```
-[0.004040007680256669, 0.014698354446450401, 0.031055984373102252, 0.052700761751369396, 0.07963484721284364, 0.1114734068553147, 0.14820166805628499, 0.1880258651911193, 0.2271020312695291, 0.2608857812403329]
+[0.0037195948778340066, 0.014366257675743288, 0.030708853373073164, 0.052335948982649816, 0.07924991777047796, 0.11106598410605262, 0.14776949809916906, 0.18756665481659018, 0.22661330217618136, 0.2603647483110927]
 ```
 
 This can be simply plotted against the radii inputted as seen below (would require installation of [matplotlib](https://pypi.org/project/matplotlib/)):
