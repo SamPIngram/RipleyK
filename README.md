@@ -49,6 +49,7 @@ Note the term "region" is being used interchangeably for distance, area and volu
 For these examples lets create a random subset of points in a sphere of radius 1:
 ```python
 import random
+import numpy as np
 xs = []
 ys = []
 zs = []
