@@ -85,7 +85,7 @@ k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys)
 print(k)
 ```
 
-You should get a value of ```0.7573``` as k.
+You should get a value of ```0.7572``` as k.
 
 By default this will not include any boundary correction. To add this simply add ```boundary_correct=True``` to the above function. This should always increase the value. Now we get a value of ```0.8646``` as k.
 
@@ -116,7 +116,7 @@ print(k)
 
 You should get the following results: 
 ```
-[0.0037195948778340066, 0.014366257675743288, 0.030708853373073164, 0.052335948982649816, 0.07924991777047796, 0.11106598410605262, 0.14776949809916906, 0.18756665481659018, 0.22661330217618136, 0.2603647483110927]
+[-9.290137551123609e-06, -0.00010544767161566743, -0.00039142698870800463, -0.0007282757869681578, -0.0013863220751694216, -0.002301632731796177, -0.002895761209242842, -0.004294205083374969, -0.005929855937486295, -0.007915443959695345]
 ```
 
 This can be simply plotted against the radii inputted as seen below (would require installation of [matplotlib](https://pypi.org/project/matplotlib/)):
