@@ -3,6 +3,7 @@ import pytest
 from ripleyk import ripleyk
 import random
 
+
 @pytest.fixture(scope="module")
 def random_points_3d():
     """
@@ -30,6 +31,7 @@ def random_points_3d():
                 positioned = True
     return np.array(xs), np.array(ys), np.array(zs)
 
+
 def test_calculate_ripley_2d_single_radius(random_points_3d):
     xs, ys, _ = random_points_3d
     radius = 0.5
@@ -37,28 +39,56 @@ def test_calculate_ripley_2d_single_radius(random_points_3d):
     k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys)
     assert np.isclose(k, 0.757289, atol=1e-6)
 
+
 def test_calculate_ripley_2d_single_radius_boundary_correct(random_points_3d):
     xs, ys, _ = random_points_3d
     radius = 0.5
     bounding_radius = 1
-    k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys, boundary_correct=True)
+    k = ripleyk.calculate_ripley(
+        radius, bounding_radius, d1=xs, d2=ys, boundary_correct=True
+    )
     assert np.isclose(k, 0.864648, atol=1e-6)
 
-def test_calculate_ripley_2d_single_radius_boundary_correct_csr_normalise(random_points_3d):
+
+def test_calculate_ripley_2d_single_radius_boundary_correct_csr_normalise(
+    random_points_3d,
+):
     xs, ys, _ = random_points_3d
     radius = 0.5
     bounding_radius = 1
-    k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys, boundary_correct=True, CSR_Normalise=True)
+    k = ripleyk.calculate_ripley(
+        radius,
+        bounding_radius,
+        d1=xs,
+        d2=ys,
+        boundary_correct=True,
+        CSR_Normalise=True,
+    )
     assert np.isclose(k, 0.079249, atol=1e-6)
+
 
 def test_calculate_ripley_3d_multiple_radii(random_points_3d):
     xs, ys, zs = random_points_3d
     radii = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     expected_k = [
-        -9.290137551123609e-06, -0.00010544767161566743, -0.00039142698870800463,
-        -0.0007282757869681578, -0.0013863220751694216, -0.002301632731796177,
-        -0.002895761209242842, -0.004294205083374969, -0.005929855937486295,
-        -0.007915443959695345
+        -9.290137551123609e-06,
+        -0.00010544767161566743,
+        -0.00039142698870800463,
+        -0.0007282757869681578,
+        -0.0013863220751694216,
+        -0.002301632731796177,
+        -0.002895761209242842,
+        -0.004294205083374969,
+        -0.005929855937486295,
+        -0.007915443959695345,
     ]
-    k = ripleyk.calculate_ripley(radii, 1, d1=xs, d2=ys, d3=zs, boundary_correct=True, CSR_Normalise=True)
+    k = ripleyk.calculate_ripley(
+        radii,
+        1,
+        d1=xs,
+        d2=ys,
+        d3=zs,
+        boundary_correct=True,
+        CSR_Normalise=True,
+    )
     assert np.allclose(k, expected_k, atol=1e-6)

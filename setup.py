@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.3",
     author="Sam Ingram",
     author_email="sp_ingram12@yahoo.co.uk",
-    description="Calculation of the Ripley K (spatial statistics) value in python",
+    description=("Calculation of the Ripley K (spatial statistics) value in python"),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SamPIngram/RipleyK",
@@ -19,8 +19,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-   'numpy>=1.19.2',
-   'scipy>=1.5.2',
+        "numpy>=1.19.2",
+        "scipy>=1.5.2",
     ],
-    python_requires='>=3.5',
+    python_requires=">=3.5",
 )

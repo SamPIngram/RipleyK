@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml/badge.svg)](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml)
 
-Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems. 
+Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems.
 
 ## Installation
 You can install the RipleyK package using the following pip command:
@@ -31,14 +31,14 @@ The mathematical equations for the calculated Ripley K value and normalised L va
 <br/>
 <img src="https://render.githubusercontent.com/render/math?math=L(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - 2r">
 
-### 2D Equations: 
+### 2D Equations:
 
 <img src="https://render.githubusercontent.com/render/math?math=K(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
 
 <br/>
 <img src="https://render.githubusercontent.com/render/math?math=L(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \pi r^{2}">
 
-### 3D Equations: 
+### 3D Equations:
 
 <img src="https://render.githubusercontent.com/render/math?math=K(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
 <br/>
@@ -117,7 +117,7 @@ k = ripleyk.calculate_ripley(radii, 1, d1=xs, d2=ys, d3=zs,boundary_correct=True
 print(k)
 ```
 
-You should get the following results: 
+You should get the following results:
 ```
 [-9.29e-06, -0.000105, -0.000391, -0.000728, -0.001386, -0.002302, -0.002896, -0.004294, -0.005930, -0.007915]
 ```
