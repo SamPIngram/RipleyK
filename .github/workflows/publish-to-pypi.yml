@@ -26,7 +26,7 @@ jobs:
         run: python -m build --sdist
 
       - name: Upload sdist artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sdist-artifact
           path: dist/
@@ -55,7 +55,7 @@ jobs:
         run: python -m build --wheel
 
       - name: Upload wheel artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: wheel-artifact-${{ matrix.os }}-${{ matrix.python-version }}
           path: dist/
@@ -66,15 +66,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download all build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          path: artifacts
+        uses: actions/download-artifact@v4
 
       - name: Combine artifacts and list
         run: |
           mkdir dist
-          shopt -s globstar
-          mv artifacts/**/*.whl artifacts/**/*.tar.gz dist/
+          find . -path ./dist -prune -o -type f \( -name "*.whl" -o -name "*.tar.gz" \) -exec mv -t dist/ {} +
           ls -R dist
 
       - name: Publish package to PyPI
