@@ -71,7 +71,7 @@ jobs:
       - name: Combine artifacts and list
         run: |
           mkdir dist
-          find . -path ./dist -prune -o -type f \( -name "*.whl" -o -name "*.tar.gz" \) -exec mv -t dist/ {} +
+          find . -path ./dist -prune -o -type f \( -name "*.whl" -o -name "*.tar.gz" \) -exec cp -f {} dist/ \;
           ls -R dist
 
       - name: Publish package to PyPI
