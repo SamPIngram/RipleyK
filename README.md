@@ -1,6 +1,6 @@
 # RipleyK
 
-[![CI](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml/badge.svg)](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml)
+[![CI](https://github.com/SamPIngram/RipleyK/actions/workflows/python-package.yml/badge.svg)](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml)
 
 Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems.
 
