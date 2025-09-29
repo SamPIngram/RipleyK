@@ -1,5 +1,8 @@
 # RipleyK
-Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems. 
+
+[![CI](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml/badge.svg)](https://github.com/SamPIngram/RipleyK/actions/workflows/ci.yml)
+
+Calculation of the Ripley K ([spatial statistics](https://en.wikipedia.org/wiki/Spatial_descriptive_statistics)) value in python. This project is still being developed and currently only supports 'circle' based bounding regions for automated boundary correction. Can support 'rectangle' based bounding regions if you do not require boundary corrections. This package allows quick calculation (using [kd-trees](https://en.wikipedia.org/wiki/K-d_tree)) the RipleyK values for 1D-3D systems.
 
 ## Installation
 You can install the RipleyK package using the following pip command:
@@ -9,11 +12,11 @@ pip install ripleyk
 
 To get started from source quickly follow these steps:
 
-1. Clone or download this repository and launch python within the folder.
+1. Clone or download this repository.
 
-2. Make a python environment to run in. Always recommend the use of virtual environments for safety. Must be Python3 and currently only tested with Python 3.8.
+2. Make a python environment to run in. We recommend the use of virtual environments. This package is tested on Python 3.8, 3.9, 3.10, and 3.11.
 
-3. Install requirement.txt file into your new python environment
+3. Install requirements using the `requirements.txt` file into your new python environment:
 ```
 pip install -r requirements.txt
 ```
@@ -28,14 +31,14 @@ The mathematical equations for the calculated Ripley K value and normalised L va
 <br/>
 <img src="https://render.githubusercontent.com/render/math?math=L(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - 2r">
 
-### 2D Equations: 
+### 2D Equations:
 
 <img src="https://render.githubusercontent.com/render/math?math=K(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
 
 <br/>
 <img src="https://render.githubusercontent.com/render/math?math=L(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \pi r^{2}">
 
-### 3D Equations: 
+### 3D Equations:
 
 <img src="https://render.githubusercontent.com/render/math?math=K(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
 <br/>
@@ -85,7 +88,7 @@ k = ripleyk.calculate_ripley(radius, bounding_radius, d1=xs, d2=ys)
 print(k)
 ```
 
-You should get a value of ```0.7572``` as k.
+You should get a value of ```0.7573``` as k.
 
 By default this will not include any boundary correction. To add this simply add ```boundary_correct=True``` to the above function. This should always increase the value. Now we get a value of ```0.8646``` as k.
 
@@ -114,9 +117,9 @@ k = ripleyk.calculate_ripley(radii, 1, d1=xs, d2=ys, d3=zs,boundary_correct=True
 print(k)
 ```
 
-You should get the following results: 
+You should get the following results:
 ```
-[-9.290137551123609e-06, -0.00010544767161566743, -0.00039142698870800463, -0.0007282757869681578, -0.0013863220751694216, -0.002301632731796177, -0.002895761209242842, -0.004294205083374969, -0.005929855937486295, -0.007915443959695345]
+[-9.29e-06, -0.000105, -0.000391, -0.000728, -0.001386, -0.002302, -0.002896, -0.004294, -0.005930, -0.007915]
 ```
 
 This can be simply plotted against the radii inputted as seen below (would require installation of [matplotlib](https://pypi.org/project/matplotlib/)):
@@ -134,5 +137,17 @@ plt.show()
 
 
 ## Dependencies
-- [Numpy](https://numpy.org/)
-- [Scipy](https://www.scipy.org/)
+- [Numpy](https://numpy.org/) (>=1.21.0)
+- [Scipy](https://www.scipy.org/) (>=1.7.0)
+
+## Contributing
+Contributions are welcome! To contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch with a descriptive name.
+3. Make your changes and add tests for them.
+4. Run the tests to ensure everything is working correctly:
+   ```
+   pytest
+   ```
+5. Create a pull request.
