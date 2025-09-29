@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ripleyk",
-    version="0.0.3",
+    version="0.9",
     author="Sam Ingram",
     author_email="sp_ingram12@yahoo.co.uk",
     description=("Calculation of the Ripley K (spatial statistics) value in python"),
