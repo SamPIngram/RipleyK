@@ -27,15 +27,15 @@ The mathematical equations for the calculated Ripley K value and normalised L va
 ### 1D Equations:
 
 $$K(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}$$
-
 <br/>
+
 $$L(r) = D \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - 2r$$
 
 ### 2D Equations:
 
 $$K(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}$$
-
 <br/>
+
 $$L(r) = A \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \pi r^{2}$$
 
 ### 3D Equations:
