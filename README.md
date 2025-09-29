@@ -43,7 +43,7 @@ The mathematical equations for the calculated Ripley K value and normalised L va
 <img src="https://render.githubusercontent.com/render/math?math=K(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}}">
 <br/>
 
-<img src="httpshttps://render.githubusercontent.com/render/math?math=L(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \frac{4}{3} \pi r^{3}">
+<img src="https://render.githubusercontent.com/render/math?math=L(r) = V \frac{\sum_{i=1}^{n} \sum_{i\ne j} I[D(i,j)\leq r]}{\omega n^{2}} - \frac{4}{3} \pi r^{3}">
 
 Note the term "region" is being used interchangeably for distance, area and volume for the 1D, 2D and 3D descriptions respectively. r is the line (1D) or radius (2D/3D) of the search region. ω is the ratio of overlap of the search region with the whole sample region, this is 1 if the search region is entirely within the sample region and <1 if some of the search region is outside of the sample region. If all of the search region is outside of the sample region this is 0 and the Ripley value will not be calculated. I is the indicator function which will be either 1 if the condition D(i,j)≤r is true or will be 0, where D(i,j) is the euclidean distance between points i and j. The size of the sample region is defined as a distance (D), area (A) or volume (V) within the 1D, 2D and 3D equations respectively.
 
