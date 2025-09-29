@@ -14,7 +14,7 @@ To get started from source quickly follow these steps:
 
 1. Clone or download this repository.
 
-2. Make a python environment to run in. We recommend the use of virtual environments. This package is tested on Python 3.8, 3.9, 3.10, and 3.11.
+2. Make a python environment to run in. We recommend the use of virtual environments. This package is tested on Python 3.9, 3.10, 3.11, 3.12 and 3.13.
 
 3. Install requirements using the `requirements.txt` file into your new python environment:
 ```
